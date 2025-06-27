@@ -1,5 +1,3 @@
-import streamlit as st
-
 class MeyenburgNumber:
     def __init__(self, real=0.0, imag=0.0):
         self.value = complex(real, imag)
@@ -35,16 +33,12 @@ class MeyenburgNumber:
         result = self.value * other.value
         return MeyenburgNumber(result.real, result.imag)
 
-# Streamlit UI
-st.title("Meyenburg-Algebra Webdemo")
-st.markdown("**Alternative Arithmetik:** `0 → i`, Division durch Null erlaubt und wohldefiniert.")
+x = float(input("Erste Zahl:"))
+y = float(input("Zweite Zahl:"))
+operation = input("Operation (Addition, etc...")
 
-a = st.number_input("Erste Zahl (a)", value=1.0)
-b = st.number_input("Zweite Zahl (b)", value=0.0)
-operation = st.selectbox("Operation", ["Addition", "Subtraktion", "Multiplikation", "Division"])
-
-x = MeyenburgNumber.from_real_or_zero(a)
-y = MeyenburgNumber.from_real_or_zero(b)
+x = MeyenburgNumber.from_real_or_zero(x)
+y = MeyenburgNumber.from_real_or_zero(y)
 
 if operation == "Addition":
     result = x + y
@@ -55,4 +49,4 @@ elif operation == "Multiplikation":
 elif operation == "Division":
     result = x / y
 
-st.markdown(f"**Ergebnis:** `{result}`")
+print(result)
